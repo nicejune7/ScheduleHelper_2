@@ -7,7 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +17,8 @@ import android.widget.Button;
 public class FirstExcuteActivity extends AppCompatActivity {
     public DatabaseHelper dbHelper;
     public SQLiteDatabase db;
+
+    ViewPager vp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,13 +52,10 @@ public class FirstExcuteActivity extends AppCompatActivity {
         dbHelper = new DatabaseHelper(getApplicationContext(), Const.DATABASE_NAME, null, Const.DATABASE_VERSION);
         db = dbHelper.getWritableDatabase();
 
-        Button btn_firstexcute_finish = (Button) findViewById(R.id.btn_firstexcute_finish);
-        btn_firstexcute_finish.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        vp = (ViewPager)findViewById(R.id.vp);
+
+        vp.setAdapter(new pagerAdapter(getSupportFragmentManager()));
+        vp.setCurrentItem(0);
     }
 
     private class DatabaseHelper extends SQLiteOpenHelper {
@@ -97,6 +98,44 @@ public class FirstExcuteActivity extends AppCompatActivity {
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
+        }
+    }
+
+    View.OnClickListener movePageListener = new View.OnClickListener()
+    {
+        @Override
+        public void onClick(View v)
+        {
+            int tag = (int) v.getTag();
+            vp.setCurrentItem(tag);
+        }
+    };
+
+    private class pagerAdapter extends FragmentStatePagerAdapter
+    {
+        public pagerAdapter(android.support.v4.app.FragmentManager fm)
+        {
+            super(fm);
+        }
+        @Override
+        public android.support.v4.app.Fragment getItem(int position)
+        {
+            switch(position)
+            {
+                case 0:
+                    return new FirstExcute1Fragment();
+                case 1:
+                    return new FirstExcute2Fragment();
+                case 2:
+                    return new FirstExcute3Fragment();
+                default:
+                    return null;
+            }
+        }
+        @Override
+        public int getCount()
+        {
+            return 3;
         }
     }
 }
