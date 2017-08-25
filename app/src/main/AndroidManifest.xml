@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sbc.sk.schedulehelper">
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher_schedulehelper"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <!-- android:roundIcon="@mipmap/ic_launcher_schedulehelper_round" :테그 내에서는 주석 불가.. 위치는 17line -->
+
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ShareActivity"
+            android:label="Share Activity" />
+        <activity
+            android:name=".SettingActivity"
+            android:label="Setting Activity" />
+        <activity
+            android:name=".saveScheduleActivity"
+            android:label="Save ScheduleActivity" />
+
+        <service
+            android:name=".AnalysisReply"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".MessagingService"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".Service2"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".saveSchedule"
+            android:enabled="true"
+            android:exported="true" />
+
+        <receiver
+            android:name=".MessageReplyReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.example.android.messagingservice.ACTION_MESSAGE_REPLY" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".BroadcastD" />
+        <receiver
+            android:name=".Boosted_http"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".PunctualService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".FirstExcuteActivity"></activity>
+    </application>
+
+</manifest>
