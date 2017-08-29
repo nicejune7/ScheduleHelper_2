@@ -3,6 +3,8 @@ package com.sbc.sk.schedulehelper;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.CursorIndexOutOfBoundsException;
@@ -11,10 +13,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.RectF;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.alamkanak.weekview.MonthLoader;
 import com.alamkanak.weekview.WeekView;
@@ -105,14 +109,63 @@ public class CalendarFragment extends Fragment implements MonthLoader.MonthChang
     }
 
     @Override
-    public void onEventClick(WeekViewEvent event, RectF eventRect) {
-        String DELETE_SQL = "delete from " + Const.TABLE_NAME + " where scid = ?";
-        String[] args1 = {String.valueOf(event.getId())};
-        db.execSQL(DELETE_SQL, args1);
-        Snackbar.make(getActivity().getWindow().getDecorView().getRootView(), "일정 " + event.getName() + " 삭제완료!", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show();
-        FragmentManager manager = getFragmentManager();
-        manager.beginTransaction().replace(R.id.content_main, new CalendarFragment()).commit();
+    public void onEventClick(final WeekViewEvent event, RectF eventRect) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("\"" + event.getName() + "\"" + "일정을")
+                .setItems(R.array.edit_calendar_list_item, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // The 'which' argument contains the index position
+                        // of the selected item
+
+                        if (which == 0) {
+                            // 기존 일정 확인하기
+                            String SELECT_1_SQL = "select ifnull (latitude, -1), ifnull (longitude, -1) from " + Const.TABLE_NAME + " where scid = ?";
+                            String[] args3 = {String.valueOf(event.getId())};
+                            Cursor c3 = db.rawQuery(SELECT_1_SQL, args3);
+
+                            c3.moveToNext();
+                            String latitude_str = c3.getString(0);
+                            String longitude_str = c3.getString(1);
+                            c3.close();
+
+                            float latitude_float = Float.parseFloat(latitude_str);
+                            float longitude_float = Float.parseFloat(longitude_str);
+
+                            if (latitude_float == -1) {
+                                // 위치정보 추가하기
+                                Intent intent = new Intent(getActivity(), AddLocationDialogActivity.class);
+                                long put_sc_id = event.getId();
+                                String put_event_name = event.getName();
+                                intent.putExtra("sc_id", put_sc_id);
+                                intent.putExtra("event_name", put_event_name);
+                                startActivity(intent);
+                            } else {
+                                // 이미 위치정보가 존재
+                                Snackbar.make(getActivity().getWindow().getDecorView().getRootView(), "일정 " + event.getName() + "는 이미 설정되어 있습니다!", Snackbar.LENGTH_LONG)
+                                        .setAction("Action", null).show();
+
+                                Toast.makeText(getActivity(), "latitude : " + latitude_str + "\nlongitude : " + longitude_str, Toast.LENGTH_LONG).show();
+                            }
+                        }
+                        else if (which == 1) {
+                            // 일정 삭제하기
+                            String DELETE_SQL = "delete from " + Const.TABLE_NAME + " where scid = ?";
+                            String[] args1 = {String.valueOf(event.getId())};
+                            db.execSQL(DELETE_SQL, args1);
+                            Snackbar.make(getActivity().getWindow().getDecorView().getRootView(), "일정 " + event.getName() + " 삭제완료!", Snackbar.LENGTH_LONG)
+                                    .setAction("Action", null).show();
+                            FragmentManager manager = getFragmentManager();
+                            manager.beginTransaction().replace(R.id.content_main, new CalendarFragment()).commit();
+
+                        }
+                        else {
+                            Snackbar.make(getActivity().getWindow().getDecorView().getRootView(), "지원하지 않는 기능입니다.", Snackbar.LENGTH_LONG)
+                                    .setAction("Action", null).show();
+                        }
+                    }
+                });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 
     @Override

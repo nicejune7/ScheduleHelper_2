@@ -79,7 +79,9 @@ public class FirstExcuteActivity extends AppCompatActivity {
                     + " endmonth integer, "
                     + " enddate integer, "
                     + " endhour integer, "
-                    + " endminute integer)";
+                    + " endminute integer, "
+                    + " latitude text, "
+                    + " longitude text)";
             db.execSQL(CREATE_SQL);
 
             String CREATE_MEMO = "create table " + Const.TABLE_MEMO + "("
@@ -87,12 +89,6 @@ public class FirstExcuteActivity extends AppCompatActivity {
                     + " memoid integer, "
                     + " contents text)";
             db.execSQL(CREATE_MEMO);
-
-            String CREATE_LOCATION = "create table " + Const.TABLE_LOCATION + "("
-                    + " _id integer PRIMARY KEY autoincrement, "
-                    + " locationid integer, "
-                    + " location text)";
-            //db.execSQL(CREATE_LOCATION);
         }
 
         @Override

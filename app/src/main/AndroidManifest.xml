@@ -78,7 +78,12 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".FirstExcuteActivity"></activity>
+        <activity android:name=".FirstExcuteActivity" />
+        <activity
+            android:name=".AddLocationDialogActivity"
+            android:label="늦지않게 알려주기"
+            android:theme="@style/DialogTheme">
+        </activity>
     </application>
 
 </manifest>

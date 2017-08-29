@@ -11,9 +11,6 @@
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
 
         <item name="android:windowLightStatusBar">true</item>
-
-
-
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -26,5 +23,8 @@
     </style>
 <!-- null 바꾸면 노란색으로도 가능 -->
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+    </style>
 
 </resources>
