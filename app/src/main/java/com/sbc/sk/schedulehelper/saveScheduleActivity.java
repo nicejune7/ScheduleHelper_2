@@ -40,7 +40,7 @@ public class saveScheduleActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_saveschedule);
 
-        long now = System.currentTimeMillis();
+        long now = System.currentTimeMillis()+9*60*60*1000;
         Date date = new Date(now);
         SimpleDateFormat hour_now = new SimpleDateFormat("yy/MM/dd HH:mm");
         String hour_s = hour_now.format(date);
