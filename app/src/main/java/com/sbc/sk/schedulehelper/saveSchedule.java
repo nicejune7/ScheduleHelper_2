@@ -45,6 +45,7 @@ public class saveSchedule extends Service {
 
             }
             count = 0;
+            onDestroy();
 
 
 

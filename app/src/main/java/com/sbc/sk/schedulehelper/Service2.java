@@ -115,7 +115,7 @@ public class Service2 extends Service {
 
         Intent ii2= new Intent(getApplicationContext(),saveSchedule.class);
 
-        PendingIntent pi = PendingIntent.getService(getApplicationContext(),0,ii2,PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pi = PendingIntent.getService(getApplicationContext(),0,ii2,PendingIntent.FLAG_CANCEL_CURRENT);
 
 
 
@@ -124,7 +124,9 @@ public class Service2 extends Service {
                         .setSmallIcon(R.drawable.ic_launcher)
                         .setContentTitle("스케줄자동저장기능")
                         .setContentText("같은장소에 계속머물렀습니다 스케줄로 저장하시겠습니까?")
-                        .addAction(R.drawable.ic_launcher,"Yes",pi);
+                        .addAction(R.drawable.ic_launcher,"Yes",pi)
+                        .setAutoCancel(true);
+
 
         NotificationManager mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         byte [] buffer = new byte[6];
@@ -147,12 +149,7 @@ public class Service2 extends Service {
                     locationA.setLatitude(lat1);
                     locationA.setLongitude(lon1);
                     Stime = System.currentTimeMillis();
-                    try {
 
-                        pi.send();
-                    } catch (PendingIntent.CanceledException e) {
-                        e.printStackTrace();
-                    }
                 }
 
 
@@ -326,7 +323,7 @@ public class Service2 extends Service {
                         // else
                         //  {
                         //      Toast.makeText(getApplicationContext(),"기존에 있는 스케쥴의 날짜 시간 스케쥴이 지속되는시간은(분)"+ymd_i+" "+hour_i+" "+minute_i+" "+dr_i+"이고 현재날짜와 시간은 "+ymd_s+" "+hour_s+" "+minute_s+"이므로 스케쥴이 안겹칩니다",Toast.LENGTH_SHORT).show();
-
+                        pi.send();
                         mNotificationManager.notify(0,mBuilder.build());
                         db.close();
 
