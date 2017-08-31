@@ -71,8 +71,7 @@ public class Service2 extends Service {
         super.onCreate();
 
         gps2 = new GPS(this);
-        dbHelper = new DatabaseHelper(getApplicationContext(), Const.DATABASE_NAME, null, Const.DATABASE_VERSION);
-        db = dbHelper.getReadableDatabase();
+
 
         mContext = this;
         Log.d("test", "서비스의 onCreate");
@@ -97,10 +96,13 @@ public class Service2 extends Service {
         Log.d("test", "서비스의 onStartCommand");
 
         isStop=false;
+        dbHelper = new DatabaseHelper(getApplicationContext(), Const.DATABASE_NAME, null, Const.DATABASE_VERSION);
+        db = dbHelper.getReadableDatabase();
 
         Thread counter = new Thread(new Counter());
         counter.start();
-        onDestroy();
+
+
         return super.onStartCommand(intent, flags, startId);
     }
 
@@ -166,6 +168,7 @@ public class Service2 extends Service {
                 {
                     Toast.makeText(getApplicationContext(), "LocationSevice를 종료합니다.", Toast.LENGTH_SHORT).show();
                     isStop=true;
+                    db.close();
                 }
 
 
@@ -213,11 +216,13 @@ public class Service2 extends Service {
                         {
                             isStop = true;
                             Log.d("2", "2");
+                            db.close();
                         }
                         if(begintime.getTime()<(Stime+gmt+50*60*1000)&&(System.currentTimeMillis()+gmt)<endtime.getTime())
                         {
                             isStop = true;
                             Log.d("3", "3");
+                            db.close();
                         }
 
                     } catch (ParseException e) {
@@ -244,11 +249,13 @@ public class Service2 extends Service {
                         if(begintime.getTime()<(Stime+gmt)&&(System.currentTimeMillis()+gmt)<endtime.getTime())
                         {
                             Log.d("4", "4");
+                            db.close();
                             isStop = true;
                         }
                         if(begintime.getTime()<(Stime+gmt+50*60*1000)&&(System.currentTimeMillis()+gmt)<endtime.getTime())
                         {
                             Log.d("5", "5");
+                            db.close();
                             isStop = true;
                         }
 
@@ -321,6 +328,7 @@ public class Service2 extends Service {
                         //      Toast.makeText(getApplicationContext(),"기존에 있는 스케쥴의 날짜 시간 스케쥴이 지속되는시간은(분)"+ymd_i+" "+hour_i+" "+minute_i+" "+dr_i+"이고 현재날짜와 시간은 "+ymd_s+" "+hour_s+" "+minute_s+"이므로 스케쥴이 안겹칩니다",Toast.LENGTH_SHORT).show();
 
                         mNotificationManager.notify(0,mBuilder.build());
+                        db.close();
 
                         //  }
 
@@ -348,7 +356,7 @@ public class Service2 extends Service {
 
         Log.d("test", "서비스의 onDestroy");
         super.onDestroy();
-
+        db.close();
         // 서비스가 종료될 때 실행
     }
     private class DatabaseHelper extends SQLiteOpenHelper {
