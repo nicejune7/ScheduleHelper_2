@@ -172,7 +172,7 @@ public class Service2 extends Service {
                 Cursor c = db.rawQuery("SELECT*FROM "+Const.TABLE_NAME,null);
                 c.moveToFirst();
                 SimpleDateFormat time = new SimpleDateFormat("yyyy-MM-dd-HH:mm");
-                long gmt = 9*60*60*1000;
+                long gmt = 0;
 
                 if(c.getCount()!=0)
                 {
@@ -346,7 +346,7 @@ public class Service2 extends Service {
                 // Log로 Count 찍어보기
 
                 Log.d("COUNT,", count + ""); } });
-            // Sleep을 통해 1초씩 쉬도록 한다.
+            // Sleep을 통해 3초씩 쉬도록 한다.
             try { Thread.sleep(1000*3); } catch (InterruptedException e) { e.printStackTrace(); } } handler.post(new Runnable() { @Override public void run() { Toast.makeText(getApplicationContext(), "서비스가 종료되었습니다.", Toast.LENGTH_SHORT).show(); } }); } }
 
 
