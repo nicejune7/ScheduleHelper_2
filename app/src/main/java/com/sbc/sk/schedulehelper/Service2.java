@@ -211,12 +211,14 @@ public class Service2 extends Service {
                         // Toast.makeText(getApplicationContext(),""+diff,Toast.LENGTH_LONG).show();
                         if(begintime.getTime()<(Stime+gmt)&&(System.currentTimeMillis()+gmt)<endtime.getTime())
                         {
+                            Toast.makeText(getApplicationContext(), "중복된 스케줄이 존재합니다", Toast.LENGTH_SHORT).show();
                             isStop = true;
                             Log.d("2", "2");
                             db.close();
                         }
                         if(begintime.getTime()<(Stime+gmt+50*60*1000)&&(System.currentTimeMillis()+gmt)<endtime.getTime())
                         {
+                            Toast.makeText(getApplicationContext(), "중복된 스케줄이 존재합니다", Toast.LENGTH_SHORT).show();
                             isStop = true;
                             Log.d("3", "3");
                             db.close();
@@ -226,7 +228,7 @@ public class Service2 extends Service {
                         e.printStackTrace();
                     }
 
-                    Toast.makeText(getApplicationContext(),c.getInt(3)+" "+c.getInt(4)+" "+c.getInt(5)+" "+c.getInt(6)+" "+c.getInt(7)+" "+c.getInt(8)+" "+c.getInt(9)+" "+c.getInt(10)+" "+c.getInt(11)+" "+c.getInt(12),Toast.LENGTH_LONG).show();
+                   // Toast.makeText(getApplicationContext(),c.getInt(3)+" "+c.getInt(4)+" "+c.getInt(5)+" "+c.getInt(6)+" "+c.getInt(7)+" "+c.getInt(8)+" "+c.getInt(9)+" "+c.getInt(10)+" "+c.getInt(11)+" "+c.getInt(12),Toast.LENGTH_LONG).show();
                 }
 
 
@@ -245,12 +247,14 @@ public class Service2 extends Service {
 
                         if(begintime.getTime()<(Stime+gmt)&&(System.currentTimeMillis()+gmt)<endtime.getTime())
                         {
+                            Toast.makeText(getApplicationContext(), "중복된 스케줄이 존재합니다", Toast.LENGTH_SHORT).show();
                             Log.d("4", "4");
                             db.close();
                             isStop = true;
                         }
                         if(begintime.getTime()<(Stime+gmt+50*60*1000)&&(System.currentTimeMillis()+gmt)<endtime.getTime())
                         {
+                            Toast.makeText(getApplicationContext(), "중복된 스케줄이 존재합니다", Toast.LENGTH_SHORT).show();
                             Log.d("5", "5");
                             db.close();
                             isStop = true;
@@ -260,7 +264,7 @@ public class Service2 extends Service {
                         e.printStackTrace();
                     }
 
-                    Toast.makeText(getApplicationContext(),c.getInt(3)+" "+c.getInt(4)+" "+c.getInt(5)+" "+c.getInt(6)+" "+c.getInt(7)+" "+c.getInt(8)+" "+c.getInt(9)+" "+c.getInt(10)+" "+c.getInt(11)+" "+c.getInt(12),Toast.LENGTH_LONG).show();
+                 //   Toast.makeText(getApplicationContext(),c.getInt(3)+" "+c.getInt(4)+" "+c.getInt(5)+" "+c.getInt(6)+" "+c.getInt(7)+" "+c.getInt(8)+" "+c.getInt(9)+" "+c.getInt(10)+" "+c.getInt(11)+" "+c.getInt(12),Toast.LENGTH_LONG).show();
                 }
                 if(count==5)
                 {
@@ -305,6 +309,7 @@ public class Service2 extends Service {
                         //   }
 
                         //    Toast.makeText(getApplicationContext(),ymd_i+" "+hour_i+" "+dr_i,Toast.LENGTH_SHORT).show();
+                      /*
                         long now =System.currentTimeMillis();
                         Date date =new Date(now);
                         SimpleDateFormat ymd_now = new SimpleDateFormat("yyMMdd");
@@ -313,7 +318,7 @@ public class Service2 extends Service {
                         String hour_s = hour_now.format(date);
                         SimpleDateFormat minute_now = new SimpleDateFormat("mm");
                         String minute_s = minute_now.format(date);
-
+                    */
 
                         // if(ymd_i==Integer.parseInt(ymd_s) && Math.abs(hour_i*60+minute_i-Integer.parseInt(hour_s)*60-Integer.parseInt(minute_s))<=dr_i)
                         // {

@@ -30,7 +30,7 @@ public class saveSchedule extends Service {
         if(count>=2)
         {
 
-            Toast.makeText(getApplicationContext(),"this is need",Toast.LENGTH_LONG).show();
+            //Toast.makeText(getApplicationContext(),"this is need",Toast.LENGTH_LONG).show();
             Intent i = new Intent(getApplicationContext(), saveScheduleActivity.class);
 
             PendingIntent p = PendingIntent.getActivity(getApplicationContext(), 0, i, 0);
