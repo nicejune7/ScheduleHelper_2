@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimaryDark">#000000</color>
-    <color name="colorPrimary">#ffffff</color>
-    <color name="textColorPrimary">#000000</color>
-    <color name="windowBackground">#d6e6f5</color>
-    <color name="colorAccent">#ff00e6</color>
-    <color name="navigationBarColor">#000000</color>
-    <color name="colorDialogLine">#3F51B5</color>
-    <color name="accent_material_light">#898989</color>
-    <color name="secondary_text_material_light">#030631</color>
-    <color name="primary_material_light">#ffffff</color>
-    <color name="primary_material_dark">#ffffff</color>
-    <color name="primary_text_default_material_dark">#030c48</color>
+    <color name="default_colorPrimary">#3F51B5</color>
+    <color name="default_colorPrimaryDark">#303F9F</color>
+    <color name="default_colorAccent">#FF4081</color>
+
+    <color name="my_colorPrimary">#ffffff</color>
+    <color name="my_colorPrimaryDark">#000000</color>
+    <color name="my_colorAccent">#ff00e6</color>
+    <color name="my_textColorPrimary">#000000</color>
+    <color name="my_windowBackground">#d6e6f5</color>
+    <color name="my_navigationBarColor">#000000</color>
+    <color name="my_colorDialogLine">#3F51B5</color>
+    <color name="my_accent_material_light">#898989</color>
+    <color name="my_secondary_text_material_light">#030631</color>
+    <color name="my_primary_material_light">#ffffff</color>
+    <color name="my_primary_material_dark">#ffffff</color>
+    <color name="my_primary_text_default_material_dark">#030c48</color>
+
+    <color name="my_NavigationViewBackground">#ffffff</color>
+    <color name="my_ToolbarBackground">#ffffff</color>
+    <color name="my_CalendarBackground">#ffffff</color>
 </resources>

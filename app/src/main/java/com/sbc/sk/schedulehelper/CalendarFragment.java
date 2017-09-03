@@ -97,7 +97,7 @@ public class CalendarFragment extends Fragment implements MonthLoader.MonthChang
                 Calendar endTime = (Calendar) startTime.clone();
                 endTime.add(Calendar.HOUR, 1);
                 WeekViewEvent event = new WeekViewEvent(traveler, c2.getString(0), startTime, endTime);
-                event.setColor(getResources().getColor(R.color.colorPrimary));
+                event.setColor(getResources().getColor(R.color.default_colorPrimary));
                 events.add(event);
                 c2.close();
             } catch(CursorIndexOutOfBoundsException e) {

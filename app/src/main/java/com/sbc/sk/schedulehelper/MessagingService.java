@@ -129,7 +129,7 @@ public class MessagingService extends Service {
                 .extend(new NotificationCompat.CarExtender()
                         .setUnreadConversation(unreadConvBuilder.build())
                         .setColor(getApplicationContext().getResources()
-                                .getColor(R.color.colorPrimary)))
+                                .getColor(R.color.default_colorPrimary)))
                 .addAction(actionReplyByRemoteInput);
 
         mNotificationManager.notify(conversation.getConversationId(), builder.build());
