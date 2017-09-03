@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
-import android.util.Log;
 import android.widget.Toast;
 
 /**
@@ -34,8 +33,8 @@ public class Boosted_http extends BroadcastReceiver{
             intent_code = intent.getIntExtra("Boosted_http_code", -10);
             http_links[intent_code] = intent.getStringExtra("Boosted_links");
 
-            Log.d("Case1) Boost code는?", Double.toString((double) intent_code));
-            Log.d("link주소: ", http_links[intent_code]);
+//            Log.d("Case1) Boost code는?", Double.toString((double) intent_code));
+//            Log.d("link주소: ", http_links[intent_code]);
 
             sp_editor.putInt("intent_code1",intent_code);                 //총 count 계속 갱신해
             sp_editor.putString("http_links1"+intent_code ,http_links[intent_code]);
@@ -43,40 +42,40 @@ public class Boosted_http extends BroadcastReceiver{
         }
 
         //case2) 부팅시, 등록된 Web들을 모두 noti로 띄워줌과 동시에, Toast로 상황설명해줌.
-    if((intent.getAction()!=null)){
-        if (intent.getAction().equalsIgnoreCase(Intent.ACTION_BOOT_COMPLETED)) {
-            Toast.makeText(context, "Scheudule Helper : 부팅 완료", Toast.LENGTH_SHORT).show(); //그냥 해둠..
-            Log.d("Case2) Boost code는?", Double.toString((double) intent_code));
+        if((intent.getAction()!=null)){
+            if (intent.getAction().equalsIgnoreCase(Intent.ACTION_BOOT_COMPLETED)) {
+                Toast.makeText(context, "Scheudule Helper : 부팅 완료", Toast.LENGTH_SHORT).show(); //그냥 해둠..
+//            Log.d("Case2) Boost code는?", Double.toString((double) intent_code));
 
-            if(sp.getInt("intent_code1",-10)!=-10) {
-                for (int i = 0; i <= sp.getInt("intent_code1",-10); i++) {
-                    String text = "Check this Web site periodically :) " + (i + 1) + "번쨰 입력한 사이트입니다.";
+                if(sp.getInt("intent_code1",-10)!=-10) {
+                    for (int i = 0; i <= sp.getInt("intent_code1",-10); i++) {
+                        String text = "Check this Web site periodically :) " + (i + 1) + "번쨰 입력한 사이트입니다.";
 
-                    NotificationCompat.Builder notificationBuilder =
-                            new NotificationCompat.Builder(context)
-                                    .setAutoCancel(true)
-                                    .setSmallIcon(R.mipmap.ic_launcher_schedulehelper_round)
-                                    .setContentTitle(text);
-                    NotificationManager mNotificationManager =
-                            (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+                        NotificationCompat.Builder notificationBuilder =
+                                new NotificationCompat.Builder(context)
+                                        .setAutoCancel(true)
+                                        .setSmallIcon(R.mipmap.ic_launcher_schedulehelper_round)
+                                        .setContentTitle(text);
+                        NotificationManager mNotificationManager =
+                                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
-                    // pending implicit intent to view url
-                    Intent boostIntent = new Intent(Intent.ACTION_VIEW);
-                    boostIntent.setData(Uri.parse(sp.getString("http_links1"+i," ")));
-                    PendingIntent pending = PendingIntent.getActivity(context, i, boostIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-                    notificationBuilder.setContentIntent(pending);
-                    // using the same tag and Id causes the new notification to replace an existing one
-                    mNotificationManager.notify(String.valueOf(System.currentTimeMillis()), i, notificationBuilder.build());
+                        // pending implicit intent to view url
+                        Intent boostIntent = new Intent(Intent.ACTION_VIEW);
+                        boostIntent.setData(Uri.parse(sp.getString("http_links1"+i," ")));
+                        PendingIntent pending = PendingIntent.getActivity(context, i, boostIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+                        notificationBuilder.setContentIntent(pending);
+                        // using the same tag and Id causes the new notification to replace an existing one
+                        mNotificationManager.notify(String.valueOf(System.currentTimeMillis()), i, notificationBuilder.build());
+                    }
+                    sp_editor.clear();  //SharedPreferences 초기화
+                    sp_editor.commit();
+                    Toast.makeText(context, "Scheudule Helper : Web notification 기능 초기화", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Scheudule Helper : 중요한 사이트는 다시 등록해주세요", Toast.LENGTH_SHORT).show();
                 }
-                sp_editor.clear();  //SharedPreferences 초기화
-                sp_editor.commit();
-                Toast.makeText(context, "Scheudule Helper : Web notification 기능 초기화", Toast.LENGTH_SHORT).show();
-                Toast.makeText(context, "Scheudule Helper : 중요한 사이트는 다시 등록해주세요", Toast.LENGTH_SHORT).show();
             }
-        }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        else{
-            Toast.makeText(context, "Scheudule Helper : Boosted_http_ERROR", Toast.LENGTH_SHORT).show();
+            else{
+                Toast.makeText(context, "Scheudule Helper : Boosted_http_ERROR", Toast.LENGTH_SHORT).show();
             }
         }
     }

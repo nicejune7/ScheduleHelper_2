@@ -11,19 +11,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.location.Location;
 import android.location.LocationManager;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.widget.Toast;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -121,10 +114,10 @@ public class Service2 extends Service {
 
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(getApplicationContext())
-                        .setSmallIcon(R.drawable.ic_launcher)
+                        .setSmallIcon(R.mipmap.ic_launcher_schedulehelper_round)
                         .setContentTitle("스케줄자동저장기능")
                         .setContentText("같은장소에 계속머물렀습니다 스케줄로 저장하시겠습니까?")
-                        .addAction(R.drawable.ic_launcher,"Yes",pi)
+                        .addAction(R.mipmap.ic_launcher_schedulehelper_round,"Yes",pi)
                         .setAutoCancel(true);
 
 
