@@ -24,6 +24,11 @@ public class MemoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        //날짜
+
+
+
         // App bar의 Title 수정
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("메모");
         View view = inflater.inflate(R.layout.fragment_memo, container, false);
@@ -47,8 +52,8 @@ public class MemoFragment extends Fragment {
     }
 
     private Cursor executeRawQueryParam() {
-        String SQL = "select _id, memoid, contents from "
-                + Const.TABLE_MEMO;
+
+        String SQL = "select _id, memoid, contents from " + Const.TABLE_MEMO;
 
         Cursor c1 = db.rawQuery(SQL, null);
 

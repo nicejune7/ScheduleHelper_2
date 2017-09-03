@@ -19,7 +19,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
 import android.os.IBinder;
-import android.util.Log;
 import android.widget.Toast;
 
 import java.io.FileNotFoundException;
@@ -130,14 +129,14 @@ public class AnalysisReply extends Service {
 
                 http_array[http_code] = new AlarmHATT(getApplicationContext());
                 http_array[http_code].Alarm(input_s, http_code, http_intent_number);
-                Log.d("Analysis", "Log시작");
-                Log.d("Var_saved", Double.toString((double) Var_saved[0]));  //code 초기값 = 0
-                Log.d("Var_saved 100~ 위", Double.toString((double) Var_saved[1])); // 0부터 시작
-                Log.d("http 관련 count(전역)", Double.toString((double) http_counting));
-                Log.d("http code 관련(지역)", Double.toString((double) http_code));
-                Log.d("차이:분", Double.toString((double) intent_timing_var[0]));
-                Log.d("차이:시간", Double.toString((double) intent_timing_var[1]));
-                Log.d("Analysis", "Log끝");
+//                Log.d("Analysis", "Log시작");
+//                Log.d("Var_saved", Double.toString((double) Var_saved[0]));  //code 초기값 = 0
+//                Log.d("Var_saved 100~ 위", Double.toString((double) Var_saved[1])); // 0부터 시작
+//                Log.d("http 관련 count(전역)", Double.toString((double) http_counting));
+//                Log.d("http code 관련(지역)", Double.toString((double) http_code));
+//                Log.d("차이:분", Double.toString((double) intent_timing_var[0]));
+//                Log.d("차이:시간", Double.toString((double) intent_timing_var[1]));
+//                Log.d("Analysis", "Log끝");
 
                 //변수 Edit
                 SharedPreferences.Editor sp_editor = sp.edit();
@@ -146,7 +145,7 @@ public class AnalysisReply extends Service {
                 sp_editor.putInt("intent_timing_var[1]", intent_timing_var[1]);
                 sp_editor.commit();
 
-                if (http_counting == 30) {
+                if (http_counting == 29) {
                     Toast.makeText(getApplicationContext(), "죄송합니다. Web 알림기능은 최대 30개까지 지원합니다", Toast.LENGTH_SHORT).show();
                     Toast.makeText(getApplicationContext(), "따라서 모든 Web 알림기능은 자동 초기화됩니다.", Toast.LENGTH_SHORT).show();
                     sp_editor.clear();
@@ -362,19 +361,27 @@ public class AnalysisReply extends Service {
     public void insertMemo(String contents) {
         SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
         int memo_id = pref.getInt("memo_id", 0);
-        int memo_account = pref.getInt("memo_account", 0);
+//        int memo_account = pref.getInt("memo_account", 0); //없어도될듯.
 
+/*
+        Calendar judge_cal = Calendar.getInstance();
+        int which_year  = judge_cal.get(Calendar.YEAR)-2000;
+        int which_month = judge_cal.get(Calendar.MONTH);
+        int which_date  = judge_cal.get(Calendar.DATE);
+*/
+        //String memo_info = ""+memo_id +"번   "+which_year+"/"+which_month+"/"+which_date;
         String INSERT_MEMO_SQL = "insert into " + Const.TABLE_MEMO + "("
                 + "memoid, "
                 + "contents) "
                 + "values ("
-                + memo_id + ", "
+                //+""+memo_id +"---"+which_year+"/"+which_month+"/"+which_date + ", "
+                +memo_id+", "
                 + "'" + contents + "');";
         db.execSQL(INSERT_MEMO_SQL);
 
         SharedPreferences.Editor editor = pref.edit();
         editor.putInt("memo_id", memo_id + 1);
-        editor.putInt("memo_account", memo_account + 1);
+//        editor.putInt("memo_account", memo_account + 1);
         editor.commit();
     }
 
@@ -460,7 +467,7 @@ public class AnalysisReply extends Service {
 
             this.input_s = string;
             this.http_code = code;
-            Log.d("Anal_AlarmHatt code 몇?", Double.toString((double) this.http_code));
+//            Log.d("Anal_AlarmHatt code 몇?", Double.toString((double) this.http_code));
             this.http_intent_number = intent_number;
 
             //알람시간 calendar에 set해주기
@@ -517,16 +524,17 @@ public class AnalysisReply extends Service {
         save[1] = intb + (3 * intc);
 
         http_counting++;
-        intent_timing_var[0]+=5;
+        intent_timing_var[0]+=10;
 
-        if(intent_timing_var[0]==55){
-           intent_timing_var[0]=0;
-           intent_timing_var[1]+=1;
-        }
         if(intent_timing_var[1]==3){
-           intent_timing_var[1]=0;
+            intent_timing_var[1]=0;
+            intent_timing_var[0]=5;
+        }
+
+        if(intent_timing_var[0]>=50){
+            intent_timing_var[0]=0;
+            intent_timing_var[1]+=1;
         }
         return save;
     }
 }
-

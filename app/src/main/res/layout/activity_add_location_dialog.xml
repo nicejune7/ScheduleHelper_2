@@ -28,7 +28,7 @@
             android:layout_marginTop="8dp"
             android:ems="10"
             android:inputType="numberDecimal"
-            android:hint="37.359458"
+            android:hint="예)37.359458"
             app:layout_constraintLeft_toRightOf="@+id/tv_add_location_latitude"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -41,7 +41,7 @@
             android:layout_marginTop="6dp"
             android:ems="10"
             android:inputType="numberDecimal"
-            android:hint="127.105315"
+            android:hint="예)127.105315"
             app:layout_constraintLeft_toRightOf="@+id/tv_add_location_longitude"
             app:layout_constraintTop_toBottomOf="@+id/et_add_location_latitude" />
 
@@ -55,6 +55,7 @@
             android:gravity="center"
             android:text="위도"
             android:textSize="9pt"
+            android:textColor="#000000"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -68,6 +69,7 @@
             android:gravity="center"
             android:text="경도"
             android:textSize="9pt"
+            android:textColor="#000000"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_add_location_latitude" />
 
@@ -94,6 +96,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="설정"
+            android:textColor="#000000"
             app:layout_constraintHorizontal_bias="0.202"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -109,6 +112,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="취소"
+            android:textColor="#000000"
             app:layout_constraintHorizontal_bias="0.801"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -116,14 +120,16 @@
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/empty_space"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="8dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_add_location_save">
+            app:layout_constraintTop_toBottomOf="@+id/btn_add_location_save"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp">
 
         </android.support.constraint.ConstraintLayout>
 
