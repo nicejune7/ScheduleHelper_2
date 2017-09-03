@@ -30,7 +30,7 @@ public class saveSchedule extends Service {
         if(count>=2)
         {
 
-            Toast.makeText(getApplicationContext(),"this is need",Toast.LENGTH_LONG).show();
+            //Toast.makeText(getApplicationContext(),"this is need",Toast.LENGTH_LONG).show();
             Intent i = new Intent(getApplicationContext(), saveScheduleActivity.class);
 
             PendingIntent p = PendingIntent.getActivity(getApplicationContext(), 0, i, 0);
@@ -44,16 +44,19 @@ public class saveSchedule extends Service {
                 e.printStackTrace();
 
             }
+            count = 0;
+            onDestroy();
 
 
 
         }
+
         return super.onStartCommand(intent, flags, startId);
     }
     @Override
     public void onDestroy() {
 
-
+        count = 0;
         Log.d("test", "save서비스의 onDestroy");
         Toast.makeText(getApplicationContext(),"save destroy",Toast.LENGTH_LONG).show();
         super.onDestroy();

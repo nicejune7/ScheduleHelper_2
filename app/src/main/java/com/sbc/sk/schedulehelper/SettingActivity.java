@@ -21,7 +21,7 @@ public class SettingActivity extends Activity  {
 
 
     private Button btnShowLocation;
-    private Button change;
+  //  private Button change;
     private EditText et_previousschuedule;
 
     private TextView txtLat;
@@ -46,16 +46,16 @@ public class SettingActivity extends Activity  {
 
 
         btnShowLocation = (Button) findViewById(R.id.btn_start);
-        change = (Button)findViewById(R.id.button_change);
+       // change = (Button)findViewById(R.id.button_change);
         txtLat = (TextView) findViewById(R.id.Latitude);
         txtLon = (TextView) findViewById(R.id.Longitude);
-        et_previousschuedule = (EditText)findViewById(R.id.et_previousschedule);
+       // et_previousschuedule = (EditText)findViewById(R.id.et_previousschedule);
 
 
 
 
 
-
+/*
         change.setOnClickListener(new View.OnClickListener(){
             public void onClick(View arg0){
                 String ps = et_previousschuedule.getText().toString();
@@ -81,6 +81,8 @@ public class SettingActivity extends Activity  {
                 }
             }
         });
+        */
+
 
 
 

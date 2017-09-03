@@ -42,24 +42,4 @@
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="128dp" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="previous schedule change" />
-
-    <EditText
-        android:id="@+id/et_previousschedule"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="17 07 27 10:00 60" />
-
-    <Button
-        android:id="@+id/button_change"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="change" />
-
 </LinearLayout>
