@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -28,7 +30,7 @@
             android:layout_marginTop="8dp"
             android:ems="10"
             android:inputType="numberDecimal"
-            android:hint="예)37.359458"
+            android:hint="37.359458"
             app:layout_constraintLeft_toRightOf="@+id/tv_add_location_latitude"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -41,7 +43,7 @@
             android:layout_marginTop="6dp"
             android:ems="10"
             android:inputType="numberDecimal"
-            android:hint="예)127.105315"
+            android:hint="127.105315"
             app:layout_constraintLeft_toRightOf="@+id/tv_add_location_longitude"
             app:layout_constraintTop_toBottomOf="@+id/et_add_location_latitude" />
 
@@ -55,7 +57,6 @@
             android:gravity="center"
             android:text="위도"
             android:textSize="9pt"
-            android:textColor="#000000"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -69,7 +70,6 @@
             android:gravity="center"
             android:text="경도"
             android:textSize="9pt"
-            android:textColor="#000000"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_add_location_latitude" />
 
@@ -96,7 +96,6 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="설정"
-            android:textColor="#000000"
             app:layout_constraintHorizontal_bias="0.202"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -112,7 +111,6 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="취소"
-            android:textColor="#000000"
             app:layout_constraintHorizontal_bias="0.801"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"

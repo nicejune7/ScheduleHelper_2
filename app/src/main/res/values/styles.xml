@@ -1,16 +1,30 @@
 <resources>
-
-    <!-- Base application theme. -->
-    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="android:statusBarColor">@android:color/white</item>
-        <item name="android:textColorSecondary">@color/secondary_text_material_light</item>
-        <item name="android:textColorSecondaryInverse">@color/colorAccent</item>
+    <!-- 앱 테마 -->
+    <style name="my_AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:statusBarColor">#bbbbbb</item>
     </style>
 
-    <style name="my_DialogTheme" parent="DialogTheme" />
+    <!-- 팝업창 테마 -->
+    <style name="my_DialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
 
-    <style name="My_AppTheme" parent="Theme.AppCompat.Light.NoActionBar" />
+    </style>
+    
+    <!-- AppBarLayout 테마 -->
+    <style name="my_AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:textColorPrimary">#000000</item>
+    </style>
 
+    <!-- Toolbar 테마 -->
+    <style name="my_PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
+
+    </style>
+
+    <!-- 170903 현수 생성 -->
+    <style name="HS_DialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorPrimaryDark">@color/my_colorPrimaryDark</item>
+        <item name="android:statusBarColor">@android:color/white</item>
+        <item name="android:textColorSecondary">@color/my_secondary_text_material_light</item>
+        <item name="android:textColorSecondaryInverse">@color/my_colorAccent</item>
+    </style>
 
 </resources>

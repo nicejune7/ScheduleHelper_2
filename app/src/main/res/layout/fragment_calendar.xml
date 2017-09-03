@@ -13,8 +13,8 @@
         android:layout_height="0dp"
         app:columnGap="8dp"
         app:dayBackgroundColor="#05000000"
-        app:eventTextColor="#060897"
-        app:eventTextSize="18sp"
+        app:eventTextColor="@android:color/white"
+        app:eventTextSize="16sp"
         app:headerColumnBackground="#ffffffff"
         app:headerColumnPadding="8dp"
         app:headerColumnTextColor="#8f000000"
@@ -29,6 +29,7 @@
         app:layout_constraintVertical_bias="0.0"
         app:noOfVisibleDays="3"
         app:textSize="12sp"
-        app:todayBackgroundColor="#1848adff" />
+        app:todayBackgroundColor="#1848adff">
+    </com.alamkanak.weekview.WeekView>
 
 </android.support.constraint.ConstraintLayout>

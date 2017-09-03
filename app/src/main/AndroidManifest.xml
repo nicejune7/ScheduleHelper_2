@@ -15,46 +15,59 @@
         android:icon="@mipmap/ic_launcher_schedulehelper"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/my_DialogTheme">
+        android:theme="@style/my_AppTheme">
 
         <!-- android:roundIcon="@mipmap/ic_launcher_schedulehelper_round" :테그 내에서는 주석 불가.. 위치는 17line -->
 
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/My_AppTheme">
+            android:theme="@style/my_AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".ShareActivity"
-            android:label="Share Activity" />
+            android:label="Share Activity">
+        </activity>
+
         <activity
             android:name=".SettingActivity"
-            android:label="Setting Activity" />
+            android:label="Setting Activity">
+        </activity>
+
         <activity
             android:name=".saveScheduleActivity"
-            android:label="Save ScheduleActivity" />
+            android:label="Save ScheduleActivity">
+        </activity>
 
         <service
             android:name=".AnalysisReply"
             android:enabled="true"
-            android:exported="true" />
+            android:exported="true">
+        </service>
+
         <service
             android:name=".MessagingService"
             android:enabled="true"
-            android:exported="true" />
+            android:exported="true">
+        </service>
+
         <service
             android:name=".Service2"
             android:enabled="true"
-            android:exported="true" />
+            android:exported="true">
+        </service>
+
         <service
             android:name=".saveSchedule"
             android:enabled="true"
-            android:exported="true" />
+            android:exported="true">
+        </service>
 
         <receiver
             android:name=".MessageReplyReceiver"
@@ -63,7 +76,11 @@
                 <action android:name="com.example.android.messagingservice.ACTION_MESSAGE_REPLY" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".BroadcastD" />
+
+        <receiver
+            android:name=".BroadcastD">
+        </receiver>
+
         <receiver
             android:name=".Boosted_http"
             android:enabled="true"
@@ -76,14 +93,19 @@
         <service
             android:name=".PunctualService"
             android:enabled="true"
-            android:exported="true" />
+            android:exported="true">
+        </service>
 
-        <activity android:name=".FirstExcuteActivity" />
+        <activity
+            android:name=".FirstExcuteActivity">
+        </activity>
+
         <activity
             android:name=".AddLocationDialogActivity"
             android:label="늦지않게 알려주기"
-            android:theme="@style/DialogTheme">
+            android:theme="@style/my_DialogTheme">
         </activity>
+
     </application>
 
 </manifest>
