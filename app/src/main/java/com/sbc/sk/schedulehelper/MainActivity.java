@@ -1,11 +1,14 @@
 package com.sbc.sk.schedulehelper;
 
 import android.app.FragmentManager;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Message;
@@ -13,6 +16,8 @@ import android.os.Messenger;
 import android.os.RemoteException;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -27,6 +32,7 @@ public class MainActivity extends AppCompatActivity
 
     private Messenger mService;
     private boolean mBound;
+    private NotificationManagerCompat mNotificationManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +94,16 @@ public class MainActivity extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             sendMsg(1,1);
+            return true;
+        } else if (id == 0) {
+            mNotificationManager = NotificationManagerCompat.from(getApplicationContext());
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext())
+                    .setSmallIcon(R.mipmap.ic_launcher_schedulehelper_round)
+                    .setContentText("contenttext\n1\n2\n3\n4\n5\n6")
+                    .setContentTitle("오늘의 일정 브리핑");
+
+            mNotificationManager.notify(0, builder.build());
+
             return true;
         }
 
