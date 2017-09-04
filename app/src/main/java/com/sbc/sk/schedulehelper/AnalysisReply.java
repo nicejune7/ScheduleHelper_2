@@ -256,13 +256,16 @@ public class AnalysisReply extends Service {
         }
 
         else if((input_s.length()==1) &&(fn_character == '%')) {
-            Intent i = new Intent(getApplicationContext(), SettingActivity.class);
-            PendingIntent p = PendingIntent.getActivity(getApplicationContext(), 0, i, 0);
+            Intent i = new Intent(getApplicationContext(), Service2.class);
+            startService(i);
+            //PendingIntent p = PendingIntent.getActivity(getApplicationContext(), 0, i, 0);
+            /*
             try {
                 p.send();
             } catch (PendingIntent.CanceledException e) {
                 e.printStackTrace();
             }
+            */
             return 4;
         }
          else if((input_s.length()==1)&&(fn_character=='@')){

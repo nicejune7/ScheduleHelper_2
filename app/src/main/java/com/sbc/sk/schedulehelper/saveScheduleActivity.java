@@ -42,6 +42,7 @@ public class saveScheduleActivity extends Activity {
 
         long now = System.currentTimeMillis();
         Date date = new Date(now);
+        //Date date2 = new Date(now+7*24*60*60*1000);
         SimpleDateFormat hour_now = new SimpleDateFormat("yy/MM/dd HH:mm");
         String hour_s = hour_now.format(date);
         editText1 = (EditText) findViewById(R.id.editText);
@@ -80,6 +81,8 @@ public class saveScheduleActivity extends Activity {
                 dbHelper = new DatabaseHelper(getApplicationContext(), Const.DATABASE_NAME, null, Const.DATABASE_VERSION);
                 db = dbHelper.getWritableDatabase();
                 insertRecord((String) title, (year+2000), month, day, hour, minute, (year+2000), month, day, (hour+1), minute);
+                insertRecord((String) title, (year+2000), month, day+7, hour, minute, (year+2000), month, day+7, (hour+1), minute);
+                insertRecord((String) title, (year+2000), month, day+14, hour, minute, (year+2000), month, day+14, (hour+1), minute);
                 Toast.makeText(getApplicationContext(),"저장이 완료되었습니다",Toast.LENGTH_SHORT).show();
 
 

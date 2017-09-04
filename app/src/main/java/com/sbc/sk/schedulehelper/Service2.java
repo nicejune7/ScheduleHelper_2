@@ -117,8 +117,8 @@ public class Service2 extends Service {
                         .setSmallIcon(R.mipmap.ic_launcher_schedulehelper_round)
                         .setContentTitle("스케줄자동저장기능")
                         .setContentText("같은장소에 계속머물렀습니다 스케줄로 저장하시겠습니까?")
-                        .addAction(R.mipmap.ic_launcher_schedulehelper_round,"Yes",pi)
-                        .setAutoCancel(true);
+                        .setAutoCancel(true)
+                        .setContentIntent(pi);
 
 
         NotificationManager mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
