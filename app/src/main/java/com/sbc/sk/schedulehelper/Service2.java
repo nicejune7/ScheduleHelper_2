@@ -158,7 +158,7 @@ public class Service2 extends Service {
                 {
                     Toast.makeText(getApplicationContext(), "LocationSevice를 종료합니다.", Toast.LENGTH_SHORT).show();
                     isStop=true;
-                    db.close();
+                    //db.close();
                 }
 
 
@@ -340,7 +340,9 @@ public class Service2 extends Service {
 
                 Log.d("COUNT,", count + ""); } });
             // Sleep을 통해 3초씩 쉬도록 한다.
-            try { Thread.sleep(1000*3); } catch (InterruptedException e) { e.printStackTrace(); } } handler.post(new Runnable() { @Override public void run() { Toast.makeText(getApplicationContext(), "서비스가 종료되었습니다.", Toast.LENGTH_SHORT).show(); } }); } }
+            try { Thread.sleep(1000*3); } catch (InterruptedException e) { e.printStackTrace(); } } handler.post(new Runnable() { @Override public void run() {
+            db.close();
+            Toast.makeText(getApplicationContext(), "서비스가 종료되었습니다.", Toast.LENGTH_SHORT).show(); } }); } }
 
 
 
