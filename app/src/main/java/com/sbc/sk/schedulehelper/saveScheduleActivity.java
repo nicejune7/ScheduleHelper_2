@@ -42,6 +42,7 @@ public class saveScheduleActivity extends Activity {
 
         long now = System.currentTimeMillis();
         Date date = new Date(now);
+        //Date date2 = new Date(now+7*24*60*60*1000);
         SimpleDateFormat hour_now = new SimpleDateFormat("yy/MM/dd HH:mm");
         String hour_s = hour_now.format(date);
         editText1 = (EditText) findViewById(R.id.editText);
@@ -53,6 +54,39 @@ public class saveScheduleActivity extends Activity {
 
         editText2.setText("50");
         editText3.setText(hour_s);
+
+        Date date2 = new Date(now+7*24*60*60*1000);
+        Date date3 = new Date(now+2*7*24*60*60*1000);
+        Date date4 = new Date(now+3*7*24*60*60*1000);
+        Date date5 = new Date(now+4*7*24*60*60*1000);
+        Date date6 = new Date(now+5*7*24*60*60*1000);
+
+        String a1 = hour_now.format(date2);
+        String a2 = hour_now.format(date3);
+        String a3 = hour_now.format(date4);
+        String a4 = hour_now.format(date5);
+        String a5 = hour_now.format(date6);
+
+        final int year2 =  Integer.parseInt(a1.substring(0,2));
+        final int month2 = Integer.parseInt(a1.substring(3,5));
+        final int day2 = Integer.parseInt(a1.substring(6,8));
+
+        final int year3 =  Integer.parseInt(a2.substring(0,2));
+        final int month3 = Integer.parseInt(a2.substring(3,5));
+        final int day3 = Integer.parseInt(a2.substring(6,8));
+
+        final int year4 =  Integer.parseInt(a3.substring(0,2));
+        final int month4 = Integer.parseInt(a3.substring(3,5));
+        final int day4 = Integer.parseInt(a3.substring(6,8));
+
+        final int year5 =  Integer.parseInt(a4.substring(0,2));
+        final int month5 = Integer.parseInt(a4.substring(3,5));
+        final int day5 = Integer.parseInt(a4.substring(6,8));
+
+        final int year6 =  Integer.parseInt(a5.substring(0,2));
+        final int month6 = Integer.parseInt(a5.substring(3,5));
+        final int day6 = Integer.parseInt(a5.substring(6,8));
+
 
 
 
@@ -66,7 +100,7 @@ public class saveScheduleActivity extends Activity {
 
 
 
-               // Toast.makeText(getApplicationContext(),et3,Toast.LENGTH_LONG).show();
+                // Toast.makeText(getApplicationContext(),et3,Toast.LENGTH_LONG).show();
 
 
                 int year =  Integer.parseInt(et3.substring(0,2));
@@ -76,25 +110,30 @@ public class saveScheduleActivity extends Activity {
                 int minute = Integer.parseInt(et3.substring(12,14));
 
 
-               // Toast.makeText(getApplicationContext(),year+""+month+""+day+""+hour+""+minute++et2,Toast.LENGTH_LONG).show();
+                // Toast.makeText(getApplicationContext(),year+""+month+""+day+""+hour+""+minute++et2,Toast.LENGTH_LONG).show();
                 dbHelper = new DatabaseHelper(getApplicationContext(), Const.DATABASE_NAME, null, Const.DATABASE_VERSION);
                 db = dbHelper.getWritableDatabase();
                 insertRecord((String) title, (year+2000), month, day, hour, minute, (year+2000), month, day, (hour+1), minute);
+                insertRecord((String) title, (year2+2000), month2, day2, hour, minute, (year2+2000), month2, day2, (hour+1), minute);
+                insertRecord((String) title, (year3+2000), month3, day3, hour, minute, (year3+2000), month3, day3, (hour+1), minute);
+
+
                 Toast.makeText(getApplicationContext(),"저장이 완료되었습니다",Toast.LENGTH_SHORT).show();
 
 
-              //  ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-              //  byteArrayOutputStream.write(b1,0,b1.length);
-              //  byteArrayOutputStream.write(year);
-              //  byte[] a =  byteArrayOutputStream.toByteArray();
-              //  String a2b = new String(a,0,a.length);
+
+                //  ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                //  byteArrayOutputStream.write(b1,0,b1.length);
+                //  byteArrayOutputStream.write(year);
+                //  byte[] a =  byteArrayOutputStream.toByteArray();
+                //  String a2b = new String(a,0,a.length);
 
 
 
                 //Toast.makeText(getApplicationContext(),a2b,Toast.LENGTH_LONG).show();
 
 
-           }
+            }
         });
 
     }

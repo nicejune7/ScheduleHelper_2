@@ -36,11 +36,6 @@
         </activity>
 
         <activity
-            android:name=".SettingActivity"
-            android:label="Setting Activity">
-        </activity>
-
-        <activity
             android:name=".saveScheduleActivity"
             android:label="Save ScheduleActivity">
         </activity>

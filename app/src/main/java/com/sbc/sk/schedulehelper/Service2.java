@@ -117,8 +117,8 @@ public class Service2 extends Service {
                         .setSmallIcon(R.mipmap.ic_launcher_schedulehelper_round)
                         .setContentTitle("스케줄자동저장기능")
                         .setContentText("같은장소에 계속머물렀습니다 스케줄로 저장하시겠습니까?")
-                        .addAction(R.mipmap.ic_launcher_schedulehelper_round,"Yes",pi)
-                        .setAutoCancel(true);
+                        .setAutoCancel(true)
+                        .setContentIntent(pi);
 
 
         NotificationManager mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
@@ -158,7 +158,24 @@ public class Service2 extends Service {
                 {
                     Toast.makeText(getApplicationContext(), "LocationSevice를 종료합니다.", Toast.LENGTH_SHORT).show();
                     isStop=true;
-                    db.close();
+                    //db.close();
+                }
+
+                Date S = new Date(System.currentTimeMillis());
+                SimpleDateFormat timenow = new SimpleDateFormat("HH");
+                String hour = timenow.format(S);
+
+                if(20<=Integer.parseInt(hour)&&23>=Integer.parseInt(hour))
+                {
+                    Toast.makeText(getApplicationContext(), "사용하지않는 시간입니다", Toast.LENGTH_SHORT).show();
+
+                    isStop=true;
+                }
+                else if(0<=Integer.parseInt(hour)&&7>=Integer.parseInt(hour))
+                {
+                    Toast.makeText(getApplicationContext(), "사용하지않는 시간입니다", Toast.LENGTH_SHORT).show();
+
+                    isStop = true;
                 }
 
 
@@ -221,7 +238,7 @@ public class Service2 extends Service {
                         e.printStackTrace();
                     }
 
-                   // Toast.makeText(getApplicationContext(),c.getInt(3)+" "+c.getInt(4)+" "+c.getInt(5)+" "+c.getInt(6)+" "+c.getInt(7)+" "+c.getInt(8)+" "+c.getInt(9)+" "+c.getInt(10)+" "+c.getInt(11)+" "+c.getInt(12),Toast.LENGTH_LONG).show();
+                    // Toast.makeText(getApplicationContext(),c.getInt(3)+" "+c.getInt(4)+" "+c.getInt(5)+" "+c.getInt(6)+" "+c.getInt(7)+" "+c.getInt(8)+" "+c.getInt(9)+" "+c.getInt(10)+" "+c.getInt(11)+" "+c.getInt(12),Toast.LENGTH_LONG).show();
                 }
 
 
@@ -257,7 +274,7 @@ public class Service2 extends Service {
                         e.printStackTrace();
                     }
 
-                 //   Toast.makeText(getApplicationContext(),c.getInt(3)+" "+c.getInt(4)+" "+c.getInt(5)+" "+c.getInt(6)+" "+c.getInt(7)+" "+c.getInt(8)+" "+c.getInt(9)+" "+c.getInt(10)+" "+c.getInt(11)+" "+c.getInt(12),Toast.LENGTH_LONG).show();
+                    //   Toast.makeText(getApplicationContext(),c.getInt(3)+" "+c.getInt(4)+" "+c.getInt(5)+" "+c.getInt(6)+" "+c.getInt(7)+" "+c.getInt(8)+" "+c.getInt(9)+" "+c.getInt(10)+" "+c.getInt(11)+" "+c.getInt(12),Toast.LENGTH_LONG).show();
                 }
                 if(count==5)
                 {
@@ -340,7 +357,9 @@ public class Service2 extends Service {
 
                 Log.d("COUNT,", count + ""); } });
             // Sleep을 통해 3초씩 쉬도록 한다.
-            try { Thread.sleep(1000*3); } catch (InterruptedException e) { e.printStackTrace(); } } handler.post(new Runnable() { @Override public void run() { Toast.makeText(getApplicationContext(), "서비스가 종료되었습니다.", Toast.LENGTH_SHORT).show(); } }); } }
+            try { Thread.sleep(1000*3); } catch (InterruptedException e) { e.printStackTrace(); } } handler.post(new Runnable() { @Override public void run() {
+            db.close();
+            Toast.makeText(getApplicationContext(), "서비스가 종료되었습니다.", Toast.LENGTH_SHORT).show(); } }); } }
 
 
 
