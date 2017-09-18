@@ -267,6 +267,7 @@ public class AnalysisReply extends Service {
             }
             */
             return 4;
+            
         }
          else if((input_s.length()==1)&&(fn_character=='@')){
             Intent intent = new Intent(
