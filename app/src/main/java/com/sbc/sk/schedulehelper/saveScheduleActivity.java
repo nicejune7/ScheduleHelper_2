@@ -118,6 +118,8 @@ public class saveScheduleActivity extends Activity {
                 insertRecord((String) title, (year3+2000), month3, day3, hour, minute, (year3+2000), month3, day3, (hour+1), minute);
 
 
+
+              
                 Toast.makeText(getApplicationContext(),"저장이 완료되었습니다",Toast.LENGTH_SHORT).show();
 
 

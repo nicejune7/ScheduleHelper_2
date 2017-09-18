@@ -159,6 +159,7 @@ public class Service2 extends Service {
                     Toast.makeText(getApplicationContext(), "LocationSevice를 종료합니다.", Toast.LENGTH_SHORT).show();
                     isStop=true;
                     //db.close();
+
                 }
 
                 Date S = new Date(System.currentTimeMillis());
