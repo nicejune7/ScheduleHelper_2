@@ -159,6 +159,24 @@ public class Service2 extends Service {
                     Toast.makeText(getApplicationContext(), "LocationSevice를 종료합니다.", Toast.LENGTH_SHORT).show();
                     isStop=true;
                     //db.close();
+
+                }
+
+                Date S = new Date(System.currentTimeMillis());
+                SimpleDateFormat timenow = new SimpleDateFormat("HH");
+                String hour = timenow.format(S);
+
+                if(20<=Integer.parseInt(hour)&&23>=Integer.parseInt(hour))
+                {
+                    Toast.makeText(getApplicationContext(), "사용하지않는 시간입니다", Toast.LENGTH_SHORT).show();
+
+                    isStop=true;
+                }
+                else if(0<=Integer.parseInt(hour)&&7>=Integer.parseInt(hour))
+                {
+                    Toast.makeText(getApplicationContext(), "사용하지않는 시간입니다", Toast.LENGTH_SHORT).show();
+
+                    isStop = true;
                 }
 
 
@@ -221,7 +239,7 @@ public class Service2 extends Service {
                         e.printStackTrace();
                     }
 
-                   // Toast.makeText(getApplicationContext(),c.getInt(3)+" "+c.getInt(4)+" "+c.getInt(5)+" "+c.getInt(6)+" "+c.getInt(7)+" "+c.getInt(8)+" "+c.getInt(9)+" "+c.getInt(10)+" "+c.getInt(11)+" "+c.getInt(12),Toast.LENGTH_LONG).show();
+                    // Toast.makeText(getApplicationContext(),c.getInt(3)+" "+c.getInt(4)+" "+c.getInt(5)+" "+c.getInt(6)+" "+c.getInt(7)+" "+c.getInt(8)+" "+c.getInt(9)+" "+c.getInt(10)+" "+c.getInt(11)+" "+c.getInt(12),Toast.LENGTH_LONG).show();
                 }
 
 
@@ -257,7 +275,7 @@ public class Service2 extends Service {
                         e.printStackTrace();
                     }
 
-                 //   Toast.makeText(getApplicationContext(),c.getInt(3)+" "+c.getInt(4)+" "+c.getInt(5)+" "+c.getInt(6)+" "+c.getInt(7)+" "+c.getInt(8)+" "+c.getInt(9)+" "+c.getInt(10)+" "+c.getInt(11)+" "+c.getInt(12),Toast.LENGTH_LONG).show();
+                    //   Toast.makeText(getApplicationContext(),c.getInt(3)+" "+c.getInt(4)+" "+c.getInt(5)+" "+c.getInt(6)+" "+c.getInt(7)+" "+c.getInt(8)+" "+c.getInt(9)+" "+c.getInt(10)+" "+c.getInt(11)+" "+c.getInt(12),Toast.LENGTH_LONG).show();
                 }
                 if(count==5)
                 {
