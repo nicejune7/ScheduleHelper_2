@@ -31,6 +31,7 @@ public class Service2 extends Service {
 
     private GPS gps2;
     private boolean isStop;
+    private boolean isFirst = true;
     private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10;
     private  Context mContext;
     double lat1;
@@ -108,7 +109,7 @@ public class Service2 extends Service {
 
         Intent ii2= new Intent(getApplicationContext(),saveSchedule.class);
 
-        PendingIntent pi = PendingIntent.getService(getApplicationContext(),0,ii2,PendingIntent.FLAG_CANCEL_CURRENT);
+        PendingIntent pi = PendingIntent.getService(getApplicationContext(),0,ii2,PendingIntent.FLAG_UPDATE_CURRENT);
 
 
 
@@ -135,7 +136,15 @@ public class Service2 extends Service {
             handler.post(new Runnable() { @Override public void run() {
                 // Toast로 Count 띄우기
                 Log.d("tread", "thread");
-
+                if(isFirst)
+                {
+                    try {
+                        pi.send();
+                    } catch (PendingIntent.CanceledException e) {
+                        e.printStackTrace();
+                    }
+                    isFirst = false;
+                }
                 if(count==0) {
                     lat1 = gps2.lat;
                     lon1 = gps2.lon;
@@ -339,7 +348,7 @@ public class Service2 extends Service {
                         // else
                         //  {
                         //      Toast.makeText(getApplicationContext(),"기존에 있는 스케쥴의 날짜 시간 스케쥴이 지속되는시간은(분)"+ymd_i+" "+hour_i+" "+minute_i+" "+dr_i+"이고 현재날짜와 시간은 "+ymd_s+" "+hour_s+" "+minute_s+"이므로 스케쥴이 안겹칩니다",Toast.LENGTH_SHORT).show();
-                        pi.send();
+                        //pi.send();
                         mNotificationManager.notify(0,mBuilder.build());
                         db.close();
 

@@ -8,7 +8,8 @@ import android.util.Log;
 import android.widget.Toast;
 
 public class saveSchedule extends Service {
-    public int count;
+   // public int count;
+    boolean isFirst;
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -17,38 +18,32 @@ public class saveSchedule extends Service {
     @Override
     public void onCreate()
     {
-        count = 0;
+      //  count = 0;
         Toast.makeText(getApplicationContext(),"save 서비스 실행",Toast.LENGTH_LONG).show();
         Log.d("test", "save서비스의 onCreate");
         super.onCreate();
+        isFirst = true;
     }
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         // 서비스가 호출될 때마다 실행
-        count++;
-        Log.d("test", "save서비스의 onStartCommand"+count);
-        if(count>=2)
+       // count++;
+        Log.d("test", "save서비스의 onStartCommand"+isFirst);
+        if(isFirst==false)
         {
 
-            //Toast.makeText(getApplicationContext(),"this is need",Toast.LENGTH_LONG).show();
             Intent i = new Intent(getApplicationContext(), saveScheduleActivity.class);
-
             PendingIntent p = PendingIntent.getActivity(getApplicationContext(), 0, i, 0);
-
             try {
-
                 p.send();
-
             } catch (PendingIntent.CanceledException e) {
-
                 e.printStackTrace();
-
             }
-            count = 0;
-            onDestroy();
-
-
-
+          //  count = 0;
+        }
+        if(isFirst==true)
+        {
+            isFirst=false;
         }
 
         return super.onStartCommand(intent, flags, startId);
@@ -56,7 +51,7 @@ public class saveSchedule extends Service {
     @Override
     public void onDestroy() {
 
-        count = 0;
+      //  count = 0;
         Log.d("test", "save서비스의 onDestroy");
         Toast.makeText(getApplicationContext(),"save destroy",Toast.LENGTH_LONG).show();
         super.onDestroy();
