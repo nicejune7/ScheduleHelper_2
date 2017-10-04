@@ -29,40 +29,29 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ShareActivity"
-            android:label="Share Activity">
-        </activity>
-
+            android:label="Share Activity" />
         <activity
             android:name=".saveScheduleActivity"
-            android:label="Save ScheduleActivity">
-        </activity>
+            android:label="Save ScheduleActivity" />
 
         <service
             android:name=".AnalysisReply"
             android:enabled="true"
-            android:exported="true">
-        </service>
-
+            android:exported="true" />
         <service
             android:name=".MessagingService"
             android:enabled="true"
-            android:exported="true">
-        </service>
-
+            android:exported="true" />
         <service
             android:name=".Service2"
             android:enabled="true"
-            android:exported="true">
-        </service>
-
+            android:exported="true" />
         <service
             android:name=".saveSchedule"
             android:enabled="true"
-            android:exported="true">
-        </service>
+            android:exported="true" />
 
         <receiver
             android:name=".MessageReplyReceiver"
@@ -71,11 +60,7 @@
                 <action android:name="com.example.android.messagingservice.ACTION_MESSAGE_REPLY" />
             </intent-filter>
         </receiver>
-
-        <receiver
-            android:name=".BroadcastD">
-        </receiver>
-
+        <receiver android:name=".BroadcastD" />
         <receiver
             android:name=".Boosted_http"
             android:enabled="true"
@@ -88,19 +73,18 @@
         <service
             android:name=".PunctualService"
             android:enabled="true"
-            android:exported="true">
-        </service>
+            android:exported="true" />
 
-        <activity
-            android:name=".FirstExcuteActivity">
-        </activity>
-
+        <activity android:name=".FirstExcuteActivity" />
         <activity
             android:name=".AddLocationDialogActivity"
             android:label="늦지않게 알려주기"
-            android:theme="@style/my_DialogTheme">
-        </activity>
+            android:theme="@style/my_DialogTheme" />
 
+        <service
+            android:name=".BriefingService"
+            android:enabled="true"
+            android:exported="true" />
     </application>
 
 </manifest>
