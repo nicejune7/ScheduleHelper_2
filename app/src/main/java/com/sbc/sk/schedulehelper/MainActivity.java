@@ -1,8 +1,10 @@
 package com.sbc.sk.schedulehelper;
 
+import android.app.AlarmManager;
 import android.app.FragmentManager;
 import android.app.Notification;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -32,7 +34,6 @@ public class MainActivity extends AppCompatActivity
 
     private Messenger mService;
     private boolean mBound;
-    private NotificationManagerCompat mNotificationManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,15 +96,11 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.action_settings) {
             sendMsg(1,1);
             return true;
-        } else if (id == 0) {
-            mNotificationManager = NotificationManagerCompat.from(getApplicationContext());
-            NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext())
-                    .setSmallIcon(R.mipmap.ic_launcher_schedulehelper_round)
-                    .setContentText("contenttext\n1\n2\n3\n4\n5\n6")
-                    .setContentTitle("오늘의 일정 브리핑");
-
-            mNotificationManager.notify(0, builder.build());
-
+        } else if (id == R.id.action_imsi) {
+            AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+            Intent briefIntent = new Intent(this, BriefingService.class);
+            PendingIntent pendingIntent = PendingIntent.getService(this, 0, briefIntent, 0);
+            alarmManager.set(AlarmManager.RTC, System.currentTimeMillis() + 5000, pendingIntent);
             return true;
         }
 

@@ -19,59 +19,33 @@
         app:layout_constraintRight_toRightOf="parent"
         android:id="@+id/constraintLayout"
         app:layout_constraintHorizontal_bias="0.0"
-        tools:layout_editor_absoluteY="17dp">
+        tools:layout_editor_absoluteY="16dp">
 
         <EditText
-            android:id="@+id/et_add_location_latitude"
+            android:id="@+id/et_add_location_place"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:ems="10"
-            android:inputType="numberDecimal"
-            android:hint="37.359458"
+            android:hint="창학관"
+            android:inputType="text"
             app:layout_constraintLeft_toRightOf="@+id/tv_add_location_latitude"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/et_add_location_longitude"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="6dp"
-            android:ems="10"
-            android:inputType="numberDecimal"
-            android:hint="127.105315"
-            app:layout_constraintLeft_toRightOf="@+id/tv_add_location_longitude"
-            app:layout_constraintTop_toBottomOf="@+id/et_add_location_latitude" />
-
         <TextView
             android:id="@+id/tv_add_location_latitude"
-            android:layout_width="50dp"
+            android:layout_width="70dp"
             android:layout_height="40dp"
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:gravity="center"
-            android:text="위도"
+            android:text="약속장소"
             android:textSize="9pt"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tv_add_location_longitude"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:gravity="center"
-            android:text="경도"
-            android:textSize="9pt"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_add_location_latitude" />
 
     </android.support.constraint.ConstraintLayout>
 
