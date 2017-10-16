@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/how_to_use_p3"
-    tools:context="com.sbc.sk.schedulehelper.FirstExcute3Fragment">
+    tools:context="com.sbc.snut.schedulehelper.FirstExcute3Fragment">
 
     <Button
         android:id="@+id/btn_firstexcute_finish"
