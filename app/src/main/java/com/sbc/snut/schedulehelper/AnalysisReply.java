@@ -1,4 +1,4 @@
-package com.sbc.sk.schedulehelper;
+package com.sbc.snut.schedulehelper;
 
 /*
 0번기능 : 메모 등록

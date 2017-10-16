@@ -1,4 +1,4 @@
-package com.sbc.sk.schedulehelper;
+package com.sbc.snut.schedulehelper;
 
 import android.Manifest;
 import android.app.AlarmManager;
@@ -16,7 +16,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 
 public class FirstExcuteActivity extends AppCompatActivity {
     public DatabaseHelper dbHelper;

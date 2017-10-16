@@ -6,6 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/how_to_use_p1"
-    tools:context="com.sbc.sk.schedulehelper.FirstExcute1Fragment">
+    tools:context="com.sbc.snut.schedulehelper.FirstExcute1Fragment">
 
 </android.support.constraint.ConstraintLayout>

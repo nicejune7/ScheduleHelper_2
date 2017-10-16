@@ -1,4 +1,4 @@
-package com.sbc.sk.schedulehelper;
+package com.sbc.snut.schedulehelper;
 
 import android.Manifest;
 import android.app.AlertDialog;

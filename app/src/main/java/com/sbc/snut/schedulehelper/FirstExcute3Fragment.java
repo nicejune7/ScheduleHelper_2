@@ -1,12 +1,9 @@
-package com.sbc.sk.schedulehelper;
+package com.sbc.snut.schedulehelper;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Message;

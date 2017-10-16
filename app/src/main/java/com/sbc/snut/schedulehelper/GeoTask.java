@@ -1,4 +1,4 @@
-package com.sbc.sk.schedulehelper;
+package com.sbc.snut.schedulehelper;
 
 /**
  * Created by Administrator on 2017-08-08.

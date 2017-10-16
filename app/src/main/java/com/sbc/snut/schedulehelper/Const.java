@@ -1,4 +1,4 @@
-package com.sbc.sk.schedulehelper;
+package com.sbc.snut.schedulehelper;
 
 public class Const {
     final static int MY_PERMISSION_REQUEST_STORAGE = 1;

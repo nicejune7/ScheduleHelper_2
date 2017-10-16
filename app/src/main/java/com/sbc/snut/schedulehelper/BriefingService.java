@@ -1,4 +1,4 @@
-package com.sbc.sk.schedulehelper;
+package com.sbc.snut.schedulehelper;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -15,9 +15,6 @@ import android.icu.util.Calendar;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
-import android.text.format.DateFormat;
-
-import java.util.Date;
 
 public class BriefingService extends Service {
     private NotificationManagerCompat mNotificationManager;
