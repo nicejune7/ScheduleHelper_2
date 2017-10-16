@@ -1,5 +1,7 @@
 package com.sbc.sk.schedulehelper;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -98,6 +100,15 @@ public class BriefingService extends Service {
                 .setContentText("내용을 확인하려면 아래로 스와이프 하세요!");
 
         mNotificationManager.notify(0, builder.build());
+
+        AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+        Intent briefIntent = new Intent(this, BriefingService.class);
+        PendingIntent pendingIntent = PendingIntent.getService(this, 0, briefIntent, 0);
+
+        Calendar calendar1 = Calendar.getInstance();
+        calendar1.set(calendar1.get(Calendar.YEAR), calendar1.get(Calendar.MONTH), calendar1.get(Calendar.DATE) + 1, 7, 0, 0);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar1.getTimeInMillis(), pendingIntent);
+
         stopSelf();
     }
 

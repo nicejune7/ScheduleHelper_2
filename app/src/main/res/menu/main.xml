@@ -7,10 +7,4 @@
 
         android:title="@string/action_cmd"
         app:showAsAction="never" />
-    <item
-        android:id="@+id/action_imsi"
-        android:orderInCategory="200"
-
-        android:title="테스트 전용"
-        app:showAsAction="never" />
 </menu>

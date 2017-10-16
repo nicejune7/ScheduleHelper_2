@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
+import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Message;
@@ -96,12 +97,8 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.action_settings) {
             sendMsg(1,1);
             return true;
-        } else if (id == R.id.action_imsi) {
-            AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
-            Intent briefIntent = new Intent(this, BriefingService.class);
-            PendingIntent pendingIntent = PendingIntent.getService(this, 0, briefIntent, 0);
-            alarmManager.set(AlarmManager.RTC, System.currentTimeMillis() + 5000, pendingIntent);
-            return true;
+        } else {
+            // DO NOTHING
         }
 
         return super.onOptionsItemSelected(item);
