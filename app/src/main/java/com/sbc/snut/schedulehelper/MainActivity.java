@@ -1,11 +1,14 @@
 package com.sbc.snut.schedulehelper;
 
+import android.app.AlarmManager;
 import android.app.FragmentManager;
+import android.app.PendingIntent;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
+import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Message;
@@ -88,6 +91,7 @@ public class MainActivity extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             sendMsg(1,1);
+
             return true;
         } else {
             // DO NOTHING

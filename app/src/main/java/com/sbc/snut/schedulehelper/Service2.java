@@ -174,7 +174,7 @@ public class Service2 extends Service {
                   ///  Toast.makeText(getApplicationContext(), "LocationSevice를 종료합니다.", Toast.LENGTH_SHORT).show();
                     //Toast.makeText(getApplicationContext(), distance + "m," + gps2.lat + "," + gps2.lon + " "+lat1+","+lon1, Toast.LENGTH_SHORT).show();
                     //isStop=true;
-                    count =0;
+                    count =1;
                     locationA.setLatitude(gps2.lat);
                     locationA.setLongitude(gps2.lon);
 
@@ -188,7 +188,7 @@ public class Service2 extends Service {
                 if(20<=Integer.parseInt(hour)&&23>=Integer.parseInt(hour))
                 {
                     //Toast.makeText(getApplicationContext(), "사용하지않는 시간입니다", Toast.LENGTH_SHORT).show();
-                    count = 0;
+                    count = 1;
                     locationA.setLatitude(gps2.lat);
                     locationA.setLongitude(gps2.lon);
                     //isStop=true;
@@ -197,7 +197,7 @@ public class Service2 extends Service {
                 {
 
                     //Toast.makeText(getApplicationContext(), "사용하지않는 시간입니다", Toast.LENGTH_SHORT).show();
-                    count = 0;
+                    count = 1;
                     locationA.setLatitude(gps2.lat);
                     locationA.setLongitude(gps2.lon);
                    // isStop = true;
@@ -247,7 +247,7 @@ public class Service2 extends Service {
                             if (begintime.getTime() < (Stime + gmt) && (System.currentTimeMillis() + gmt) < endtime.getTime()) {
                            //     Toast.makeText(getApplicationContext(), "중복된 스케줄이 존재합니다", Toast.LENGTH_SHORT).show();
                                 //   isStop = true;
-                                count = 0;
+                                count = 1;
                                 locationA.setLatitude(gps2.lat);
                                 locationA.setLongitude(gps2.lon);
                                 Log.d("2", "2");
@@ -256,7 +256,7 @@ public class Service2 extends Service {
                             if (begintime.getTime() < (Stime + gmt + 50 * 60 * 1000) && (System.currentTimeMillis() + gmt) < endtime.getTime()) {
                            //     Toast.makeText(getApplicationContext(), "중복된 스케줄이 존재합니다", Toast.LENGTH_SHORT).show();
                                 //  isStop = true;
-                                count = 0;
+                                count = 1;
                                 locationA.setLatitude(gps2.lat);
                                 locationA.setLongitude(gps2.lon);
                                 Log.d("3", "3");
@@ -285,7 +285,7 @@ public class Service2 extends Service {
                             if (begintime.getTime() < (Stime + gmt) && (System.currentTimeMillis() + gmt) < endtime.getTime()) {
                               //  Toast.makeText(getApplicationContext(), "중복된 스케줄이 존재합니다", Toast.LENGTH_SHORT).show();
                                 Log.d("4", "4");
-                                count = 0;
+                                count = 1;
                                 locationA.setLatitude(gps2.lat);
                                 locationA.setLongitude(gps2.lon);
 
@@ -294,7 +294,7 @@ public class Service2 extends Service {
                             if (begintime.getTime() < (Stime + gmt + 50 * 60 * 1000) && (System.currentTimeMillis() + gmt) < endtime.getTime()) {
                                // Toast.makeText(getApplicationContext(), "중복된 스케줄이 존재합니다", Toast.LENGTH_SHORT).show();
                                 Log.d("5", "5");
-                                count = 0;
+                                count = 1;
                                 locationA.setLatitude(gps2.lat);
                                 locationA.setLongitude(gps2.lon);
                                 //  isStop = true;
@@ -371,7 +371,7 @@ public class Service2 extends Service {
                         //      Toast.makeText(getApplicationContext(),"기존에 있는 스케쥴의 날짜 시간 스케쥴이 지속되는시간은(분)"+ymd_i+" "+hour_i+" "+minute_i+" "+dr_i+"이고 현재날짜와 시간은 "+ymd_s+" "+hour_s+" "+minute_s+"이므로 스케쥴이 안겹칩니다",Toast.LENGTH_SHORT).show();
                         //pi.send();
                         mNotificationManager.notify(0,mBuilder.build());
-                        count = 0;
+                        count = 1;
                         locationA.setLatitude(gps2.lat);
                         locationA.setLongitude(gps2.lon);
                        // db.close();
@@ -391,7 +391,7 @@ public class Service2 extends Service {
 
                 Log.d("COUNT,", count + ""); } });
             // Sleep을 통해 10분씩 쉬도록 한다.
-            try { Thread.sleep(1000*60*10); } catch (InterruptedException e) { e.printStackTrace(); } } handler.post(new Runnable() { @Override public void run() {
+            try { Thread.sleep(1000*10*1); } catch (InterruptedException e) { e.printStackTrace(); } } handler.post(new Runnable() { @Override public void run() {
 
             Toast.makeText(getApplicationContext(), "서비스가 종료되었습니다.", Toast.LENGTH_SHORT).show();
            db.close();

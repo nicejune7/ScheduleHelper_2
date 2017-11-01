@@ -37,7 +37,7 @@ public class saveScheduleActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_saveschedule);
 
-        long now = System.currentTimeMillis();
+        long now = System.currentTimeMillis()-3600*1000;
         Date date = new Date(now);
         //Date date2 = new Date(now+7*24*60*60*1000);
         SimpleDateFormat hour_now = new SimpleDateFormat("yy/MM/dd HH:mm");
@@ -49,7 +49,7 @@ public class saveScheduleActivity extends Activity {
 
 
 
-        editText2.setText("50");
+        editText2.setText("60");
         editText3.setText(hour_s);
 
         Date date2 = new Date(now+7*24*60*60*1000);
@@ -130,6 +130,8 @@ public class saveScheduleActivity extends Activity {
 
 
                 //Toast.makeText(getApplicationContext(),a2b,Toast.LENGTH_LONG).show();
+
+                finish();
 
 
             }

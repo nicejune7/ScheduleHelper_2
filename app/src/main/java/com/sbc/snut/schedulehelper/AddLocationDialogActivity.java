@@ -44,6 +44,8 @@ public class AddLocationDialogActivity extends AppCompatActivity {
     Double latitude = 999.9;
     Double longitude = 999.9;
 
+    String goal_time_str = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -193,6 +195,17 @@ public class AddLocationDialogActivity extends AppCompatActivity {
                 /*Snackbar.make(getWindow().getDecorView().getRootView(), "일정 " + event_name + " 위치정보 저장!", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
                 */
+
+                Intent intent = new Intent(
+                        getApplicationContext(),//현재제어권자
+                        PunctualService.class); // 이동할 컴포넌트
+                intent.putExtra("place_latitude", latitude);
+                intent.putExtra("place_longitude", longitude);
+
+                intent.putExtra("goal_time", goal_time_str);
+
+                startService(intent);
+
                 finish();
             }
         }

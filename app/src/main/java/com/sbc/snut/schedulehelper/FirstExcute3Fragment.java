@@ -41,6 +41,10 @@ public class FirstExcute3Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 sendMsg(1,1);
+
+                //Intent i = new Intent(getActivity().getApplicationContext(), Service2.class);
+                //getActivity().startService(i);
+
                 getActivity().finish();
             }
         });

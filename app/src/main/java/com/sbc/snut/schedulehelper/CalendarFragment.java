@@ -11,6 +11,7 @@ import android.database.CursorIndexOutOfBoundsException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.RectF;
+import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
@@ -134,10 +135,22 @@ public class CalendarFragment extends Fragment implements MonthLoader.MonthChang
                             if (latitude_float == -1) {
                                 // 위치정보 추가하기
                                 Intent intent = new Intent(getActivity(), AddLocationDialogActivity.class);
+
                                 long put_sc_id = event.getId();
                                 String put_event_name = event.getName();
+
+                                Calendar getStartTime = event.getStartTime();
+                                getStartTime.add(Calendar.SECOND, 0);
+
+                                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmm00");
+                                String goal_time_str = simpleDateFormat.format(getStartTime.getTime());
+
+                                Toast.makeText(getActivity(), goal_time_str, Toast.LENGTH_LONG).show();
+
                                 intent.putExtra("sc_id", put_sc_id);
                                 intent.putExtra("event_name", put_event_name);
+                                intent.putExtra("goal_time",goal_time_str);
+
                                 startActivity(intent);
                             } else {
                                 // 이미 위치정보가 존재

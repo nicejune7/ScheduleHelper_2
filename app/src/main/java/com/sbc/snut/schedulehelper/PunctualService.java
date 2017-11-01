@@ -58,7 +58,7 @@ public class PunctualService extends Service implements GeoTask.Geo {
         super.onCreate();
         Log.d("PunctualService", "서비스의 onCreate");
 
-        str_time_appointment="20170813003000";           //임의로 설정.
+        str_time_appointment="20171026120000";           //임의로 설정.
         str_to="seoulstation";                             //임의로 설정.
 
         time_left=send_distance_time();
@@ -92,16 +92,16 @@ public class PunctualService extends Service implements GeoTask.Geo {
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(getApplicationContext())
                         .setSmallIcon(R.mipmap.ic_launcher_schedulehelper)
-                        .setContentTitle("<Schedule Helper>")
-                        .setContentText("Be Ready To Go :)");
+                        .setContentTitle("현수 점심 약속")
+                        .setContentText("지금 출발하셔야 합니다!");
 
         NotificationManager mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
         @Override public void run() { for (count = 0; count < (time_left); count++) { // STOP 버튼을 눌렀다면 종료한다.
 /**
-     * Thread 안에서는 UI와 관련된 Toast 쓸 수 없습니다.
-     * 따라서, Handler를 통해 이용할 수 있도록 만들어줍니다.
-**/
+ * Thread 안에서는 UI와 관련된 Toast 쓸 수 없습니다.
+ * 따라서, Handler를 통해 이용할 수 있도록 만들어줍니다.
+ **/
             if (isStop) {
                 break;
             }
@@ -126,7 +126,7 @@ public class PunctualService extends Service implements GeoTask.Geo {
 
                         final_time_distance = time_distance; //최초 예상 소요 시간 값
                         if(final_time_distance!=-10){
-                        Log.d("최초 예상  소요 시간:", Double.toString(var_time));
+                            Log.d("최초 예상  소요 시간:", Double.toString(var_time));
                         }
                     }
 
@@ -198,7 +198,7 @@ public class PunctualService extends Service implements GeoTask.Geo {
             });
             // Sleep을 통해 3분씩 쉬도록 한다.
             try {
-                Thread.sleep(1000*60*1);
+                Thread.sleep(1000*5*1);
             }
             catch (InterruptedException e) {
                 e.printStackTrace();
